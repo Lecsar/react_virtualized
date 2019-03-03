@@ -12,21 +12,20 @@ export class App extends React.Component {
   state = {
     rows: App.createRows(),
   };
+  
+  List = React.createRef();
 
   cache = new CellMeasurerCache({
     fixedWidth: true,
     defaultHeight: 70,
   });
 
-  handleScroll = ({ target }) => {
-    const { scrollTop, scrollLeft } = target;
+  handleScroll = ({ target: {scrollTop, scrollLeft} }) => {
+    const { Grid } = this.List.current;
 
-    const { Grid: grid } = this.List;
-
-    grid.handleScrollEvent({ scrollTop, scrollLeft });
+    Grid.handleScrollEvent({ scrollTop, scrollLeft });
   };
 
-  List = null;
 
   static MAX_ROWS_COUNT = 100;
 
@@ -67,7 +66,7 @@ export class App extends React.Component {
             onScroll={this.handleScroll}
             renderTrackVertical={props => <div className="track-vertical" {...props} />}>
             <List
-              ref={instance => (this.List = instance)}
+              ref={this.List}
               style={listStyle}
               className="list"
               width={width}
