@@ -1,0 +1,38 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper {
+    width: 300px;
+    height: 500px;
+}
+
+.list {
+    /* border: 2px solid red; */
+}
+
+.row {
+  border-bottom: 1px solid gray;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.row:hover {
+  border-left: 4px solid green;
+}
+
+.track-vertical {
+    right: 2px;
+    bottom: 2px;
+    top: 0px;
+}
